@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Replace example.com with the verified production domain before launch. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.com/</loc></url>
+  <url><loc>https://example.com/about</loc></url>
+  <url><loc>https://example.com/services</loc></url>
+  <url><loc>https://example.com/appointment</loc></url>
+  <url><loc>https://example.com/services/child-counselling</loc></url>
+  <url><loc>https://example.com/services/pre-marital-counselling</loc></url>
+  <url><loc>https://example.com/services/marital-counselling</loc></url>
+  <url><loc>https://example.com/services/family-counselling</loc></url>
+  <url><loc>https://example.com/services/old-age-counselling</loc></url>
+  <url><loc>https://example.com/services/occupational-therapy</loc></url>
+  <url><loc>https://example.com/services/speech-therapy</loc></url>
+  <url><loc>https://example.com/services/special-education</loc></url>
+  <url><loc>https://example.com/services/behavioral-management</loc></url>
+  <url><loc>https://example.com/services/cognitive-management</loc></url>
+  <url><loc>https://example.com/services/adl-training</loc></url>
+  <url><loc>https://example.com/specialists</loc></url>
+  <url><loc>https://example.com/contact</loc></url>
+  <url><loc>https://example.com/privacy</loc></url>
+  <url><loc>https://example.com/terms</loc></url>
+</urlset>

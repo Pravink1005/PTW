@@ -1,0 +1,166 @@
+// Seed content; Phase 3 moves this to the `services` table (this file stays as offline fallback).
+const serviceSummaries = [
+  { slug: 'child-counselling', name: 'Child Counselling', category: 'counselling', icon: 'Baby', blurb: 'A safe space for children to talk about feelings, school and friendships.' },
+  { slug: 'pre-marital-counselling', name: 'Pre-Marital Counselling', category: 'counselling', icon: 'HeartHandshake', blurb: 'Guided conversations for couples preparing for life together.' },
+  { slug: 'marital-counselling', name: 'Marital Counselling', category: 'counselling', icon: 'Heart', blurb: 'Support for couples working through communication and change.' },
+  { slug: 'family-counselling', name: 'Family Counselling', category: 'counselling', icon: 'Users', blurb: 'Help for families to understand each other and ease strain.' },
+  { slug: 'old-age-counselling', name: 'Old Age Counselling', category: 'counselling', icon: 'Sunset', blurb: 'Compassionate support through life transitions in later years.' },
+  { slug: 'occupational-therapy', name: 'Occupational Therapy', category: 'rehabilitation', icon: 'Hand', blurb: 'Building the skills needed for play, learning and everyday tasks.' },
+  { slug: 'speech-therapy', name: 'Speech Therapy', category: 'rehabilitation', icon: 'MessageCircle', blurb: 'Support for speech, language and communication.' },
+  { slug: 'special-education', name: 'Special Education', category: 'rehabilitation', icon: 'BookOpen', blurb: 'Learning support planned around each child\u2019s needs.' },
+  { slug: 'behavioral-management', name: 'Behavioral Management', category: 'rehabilitation', icon: 'Compass', blurb: 'Practical strategies for challenging behaviour at home and school.' },
+  { slug: 'cognitive-management', name: 'Cognitive Management', category: 'rehabilitation', icon: 'Brain', blurb: 'Exercises and strategies for attention, memory and thinking skills.' },
+  { slug: 'adl-training', name: 'ADL Training', category: 'rehabilitation', icon: 'Home', blurb: 'Training in daily living skills such as dressing, eating and self-care.' },
+];
+
+const serviceDetails = {
+  'child-counselling': {
+    introduction: 'Child counselling offers a supportive place for a child to express what is on their mind. Sessions are shaped around the child’s age, communication style and family context.',
+    helpsWith: ['Adjusting to changes at home or school', 'Talking about worries, feelings or friendships', 'Building confidence in expressing needs'],
+    audience: 'Children, with parent or caregiver involvement planned with the family.',
+    approach: 'The practitioner may use conversation, play-based activities or creative tasks, and will agree on appropriate caregiver involvement. The approach is reviewed as needs change.',
+    firstAppointment: 'The first meeting usually includes time with a parent or caregiver to understand what brings the family in, followed by an age-appropriate introduction for the child. The practitioner will discuss privacy and next steps.',
+    faqs: [
+      { question: 'Does a parent or caregiver attend?', answer: 'This depends on the child’s age, comfort and the reason for the visit. The practitioner will discuss this with the family before deciding.' },
+      { question: 'How can I prepare my child?', answer: 'A simple explanation that they will meet someone who listens and talks with children is often enough. Avoid promising a particular result.' },
+      { question: 'Will I receive updates?', answer: 'The practitioner will agree with you what can be shared, while respecting the child’s privacy and safety.' },
+    ],
+    relatedServices: ['family-counselling', 'special-education', 'behavioral-management'],
+  },
+  'pre-marital-counselling': {
+    introduction: 'Pre-marital counselling gives couples a structured setting to discuss expectations and the changes they anticipate as they build a life together.',
+    helpsWith: ['Discussing communication styles and expectations', 'Exploring shared decisions about everyday life', 'Making space for difficult or unfinished conversations'],
+    audience: 'Partners who are considering or preparing for marriage or a long-term commitment.',
+    approach: 'Sessions focus on listening, guided discussion and practical communication exercises chosen with the couple. Each partner can raise topics they consider important.',
+    firstAppointment: 'The first appointment is an opportunity to meet the practitioner, share what you hope to discuss and agree on how sessions will work. Both partners can ask questions about privacy and participation.',
+    faqs: [
+      { question: 'Do both partners need to attend?', answer: 'Joint attendance is usually helpful for this service. Contact the clinic to discuss circumstances that make this difficult.' },
+      { question: 'Do we need to bring a list of issues?', answer: 'No. You may bring topics you would like to cover, but the practitioner can help you decide where to begin.' },
+      { question: 'Is counselling only for couples in conflict?', answer: 'No. Some couples use sessions to have thoughtful conversations before making a major commitment.' },
+    ],
+    relatedServices: ['marital-counselling', 'family-counselling'],
+  },
+  'marital-counselling': {
+    introduction: 'Marital counselling offers partners time with a neutral practitioner to talk through concerns, understand each other’s perspectives and consider possible next steps.',
+    helpsWith: ['Communication that feels difficult or stuck', 'Adjusting to changes in the relationship or family', 'Clarifying needs, boundaries and shared decisions'],
+    audience: 'Married partners who wish to work on relationship concerns together.',
+    approach: 'The practitioner supports respectful conversation and may suggest exercises to try between sessions. The focus and pace are agreed with the couple.',
+    firstAppointment: 'The first session typically covers each partner’s perspective, what prompted the visit and what each hopes to address. The practitioner will explain confidentiality and any limits to it.',
+    faqs: [
+      { question: 'Can one partner attend alone?', answer: 'You can contact the clinic to discuss an individual first meeting. The practitioner can explain whether it fits the goals for care.' },
+      { question: 'Will the practitioner take sides?', answer: 'The intention is to support a fair conversation and understand both perspectives, not to assign blame.' },
+      { question: 'What if we are unsure about continuing?', answer: 'You can use the first visit to ask questions and decide together whether the approach feels suitable.' },
+    ],
+    relatedServices: ['pre-marital-counselling', 'family-counselling'],
+  },
+  'family-counselling': {
+    introduction: 'Family counselling creates a supported space for family members to discuss concerns, hear one another and consider changes that may help day-to-day relationships.',
+    helpsWith: ['Family communication and recurring disagreements', 'Changes in family roles or routines', 'Finding ways to support one another through a difficult period'],
+    audience: 'Families or selected family members who want support with shared concerns.',
+    approach: 'The practitioner will work with the family to decide who attends and what topics to prioritise. Sessions may include shared discussion and practical communication strategies.',
+    firstAppointment: 'The practitioner will ask what brings the family in and invite each person to share their view. Together, you can discuss who should attend future sessions and what feels manageable.',
+    faqs: [
+      { question: 'Does everyone in the family need to attend?', answer: 'No. The practitioner and family can decide who is most appropriate to include for a particular concern.' },
+      { question: 'Can children attend?', answer: 'This depends on the child, the topic and family circumstances. Discuss this with the practitioner when arranging a visit.' },
+      { question: 'Will everyone get equal time to speak?', answer: 'The practitioner will aim to make room for each person and help keep the conversation respectful.' },
+    ],
+    relatedServices: ['child-counselling', 'marital-counselling', 'old-age-counselling'],
+  },
+  'old-age-counselling': {
+    introduction: 'Counselling for older adults offers a respectful space to talk about changes, relationships, wellbeing and priorities at this stage of life.',
+    helpsWith: ['Adjusting to life transitions or changes in routine', 'Talking through loneliness, loss or family concerns', 'Identifying personal sources of support and meaning'],
+    audience: 'Older adults, with family involvement only when wanted and appropriate.',
+    approach: 'The practitioner listens to the person’s priorities and adapts the pace and format of sessions where possible. Support is planned collaboratively and does not replace medical care.',
+    firstAppointment: 'The first visit focuses on what the person would like support with, communication preferences and any practical access needs. A trusted person may join if the client wishes.',
+    faqs: [
+      { question: 'Can a family member come along?', answer: 'Yes, if the client wants this. The practitioner will check how the client would like that person involved.' },
+      { question: 'Can counselling help with a recent life change?', answer: 'It can provide a place to talk through the change and consider support options. What is useful varies from person to person.' },
+      { question: 'Should I bring medical information?', answer: 'Bring only information you think is relevant. The practitioner can explain what details are useful and how they are handled.' },
+    ],
+    relatedServices: ['family-counselling', 'marital-counselling'],
+  },
+  'occupational-therapy': {
+    introduction: 'Occupational therapy supports participation in meaningful everyday activities. Sessions are planned around a person’s routines, goals and environment.',
+    helpsWith: ['Practising everyday tasks and routines', 'Exploring ways to participate in play, learning or self-care', 'Identifying adaptations or strategies for daily activities'],
+    audience: 'Children or adults who want support with activities that matter to them.',
+    approach: 'The therapist may observe activities, discuss goals and practise selected tasks. Suggestions are tailored to the person and may include strategies for home, school or work.',
+    firstAppointment: 'Expect a conversation about daily routines, priorities and any access needs. The therapist may ask about activities or observe a task, with your agreement.',
+    faqs: [
+      { question: 'Should I bring anything?', answer: 'Bring any relevant reports or examples of activities you would like to discuss. The clinic can advise what is useful.' },
+      { question: 'Will activities be practised at home?', answer: 'The therapist may suggest activities to try between visits if they fit the person’s goals and routine.' },
+      { question: 'Can a caregiver attend?', answer: 'A caregiver may join when helpful and with the client’s agreement, particularly for children.' },
+    ],
+    relatedServices: ['adl-training', 'special-education', 'cognitive-management'],
+  },
+  'speech-therapy': {
+    introduction: 'Speech therapy supports communication and, where relevant, aspects of eating or swallowing. The therapist will first understand the person’s communication goals and context.',
+    helpsWith: ['Practising speech, language or communication skills', 'Exploring ways to communicate needs and ideas', 'Supporting communication at home, school or work'],
+    audience: 'Children or adults seeking support with communication or related needs.',
+    approach: 'The therapist may use conversation, structured activities and practical strategies. Goals and recommendations are discussed with the client and, where appropriate, their support network.',
+    firstAppointment: 'The first meeting usually includes a discussion of concerns, strengths and communication in everyday settings. Any assessment is explained before it begins.',
+    faqs: [
+      { question: 'Is an assessment always part of the first visit?', answer: 'Not necessarily. The therapist will discuss what information is useful and agree on suitable next steps.' },
+      { question: 'Can parents or caregivers participate?', answer: 'Yes, when appropriate and agreed. Their observations can help connect practice with daily routines.' },
+      { question: 'Will I receive exercises to practise?', answer: 'The therapist may recommend activities to try, based on the person’s goals and what is practical for them.' },
+    ],
+    relatedServices: ['occupational-therapy', 'special-education', 'cognitive-management'],
+  },
+  'special-education': {
+    introduction: 'Special education provides individualised learning support that takes account of a child’s strengths, interests and current learning needs.',
+    helpsWith: ['Practising learning skills at an individual pace', 'Finding approaches that support participation in learning', 'Coordinating learning goals with family or school where agreed'],
+    audience: 'Children who would benefit from individualised learning support.',
+    approach: 'The educator discusses learning priorities, may review relevant school information and plans activities at a suitable level. Goals are revisited with the family.',
+    firstAppointment: 'The first meeting is a chance to share the child’s interests, learning experiences and priorities. Bring school materials or reports only if you have them and wish to share them.',
+    faqs: [
+      { question: 'Do I need a school referral?', answer: 'Ask the clinic about its current intake process. If you have a referral or school plan, it may be helpful but is not assumed to be required.' },
+      { question: 'Will the educator contact the school?', answer: 'Any contact with a school should be discussed with the family and arranged with appropriate permission.' },
+      { question: 'How are learning goals chosen?', answer: 'Goals are discussed with the family and shaped by the child’s priorities, strengths and current learning context.' },
+    ],
+    relatedServices: ['child-counselling', 'occupational-therapy', 'speech-therapy'],
+  },
+  'behavioral-management': {
+    introduction: 'Behavioural management focuses on understanding behaviour in context and developing respectful, practical ways to support participation and communication.',
+    helpsWith: ['Understanding patterns around difficult moments', 'Planning consistent responses across everyday settings', 'Finding supportive ways to communicate expectations and needs'],
+    audience: 'Children, adults and caregivers seeking practical support with behaviour in daily life.',
+    approach: 'The practitioner gathers perspectives about routines and context, then works with the person or caregivers on strategies that are appropriate, respectful and reviewable.',
+    firstAppointment: 'The practitioner will ask about the situations that concern you, what has already been tried and what the person is communicating. You can discuss which people should be involved.',
+    faqs: [
+      { question: 'Is the approach based on punishment?', answer: 'The focus is on understanding context and planning supportive, respectful responses, not on punishment.' },
+      { question: 'Should caregivers attend?', answer: 'Caregiver participation can be useful, especially when strategies involve home routines. The practitioner will discuss this with you.' },
+      { question: 'Can strategies be used at school?', answer: 'Strategies can be discussed for different settings. Any school coordination should be agreed with the family and relevant permissions.' },
+    ],
+    relatedServices: ['child-counselling', 'family-counselling', 'special-education'],
+  },
+  'cognitive-management': {
+    introduction: 'Cognitive management offers structured practice and everyday strategies related to thinking skills such as attention, memory and planning.',
+    helpsWith: ['Exploring strategies for remembering everyday information', 'Practising attention or planning tasks', 'Adapting routines to make tasks easier to manage'],
+    audience: 'People who would like support with thinking skills in daily activities.',
+    approach: 'The practitioner discusses the activities that matter to the person and may use structured tasks or practical routine changes. Progress and fit are reviewed together.',
+    firstAppointment: 'The practitioner will ask about daily activities, what feels difficult and what the person would like to work towards. Existing assessments can be discussed if available.',
+    faqs: [
+      { question: 'Does this service provide a diagnosis?', answer: 'No. This service description is not a diagnostic assessment. Ask the clinic about appropriate referral options if an assessment is needed.' },
+      { question: 'Are sessions the same for everyone?', answer: 'No. Activities are selected based on the person’s priorities and the everyday situations they want to address.' },
+      { question: 'Can family members help?', answer: 'A family member may participate with the person’s agreement when their perspective or support is useful.' },
+    ],
+    relatedServices: ['occupational-therapy', 'adl-training', 'speech-therapy'],
+  },
+  'adl-training': {
+    introduction: 'Activities of daily living (ADL) training provides supported practice with daily tasks, based on the person’s goals, preferences and environment.',
+    helpsWith: ['Practising dressing, grooming or other self-care routines', 'Breaking a daily task into manageable steps', 'Exploring tools or adaptations that may support independence'],
+    audience: 'Children or adults who want practical support with everyday self-care tasks.',
+    approach: 'The practitioner discusses the task and the person’s preferences, then may practise selected steps in a respectful setting. Any suggested adaptations are considered with the person.',
+    firstAppointment: 'You can describe which daily tasks matter most and any privacy, access or comfort needs. The practitioner will explain any proposed activity before asking you to try it.',
+    faqs: [
+      { question: 'Do I have to practise every task during the visit?', answer: 'No. The person chooses what they are comfortable discussing or practising, and the plan can be adjusted.' },
+      { question: 'Can family members learn ways to help?', answer: 'With the person’s agreement, a family member can join to discuss supportive approaches at home.' },
+      { question: 'Are equipment recommendations included?', answer: 'The practitioner may discuss possible tools or adaptations where relevant. Any recommendation depends on individual needs and context.' },
+    ],
+    relatedServices: ['occupational-therapy', 'cognitive-management'],
+  },
+};
+
+export const services = serviceSummaries.map((service) => ({ ...service, ...serviceDetails[service.slug] }));
+export const categories = {
+  counselling: 'Counselling Services',
+  rehabilitation: 'Rehabilitation & Therapy Services',
+};

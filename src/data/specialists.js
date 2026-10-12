@@ -1,0 +1,28 @@
+export const specialists = [
+  {
+    id: 'placeholder-specialist-1',
+    name: '[Specialist name 1]',
+    title: '[Add verified professional title]',
+    photo: null,
+    qualifications: ['[Add verified qualifications]'],
+    practiceAreas: ['[Add verified practice areas]'],
+    languages: ['[Add languages spoken]'],
+    availability: ['[Add current availability]'],
+    serviceIds: [],
+    serviceSlugs: ['child-counselling', 'family-counselling'],
+    bio: '[Add a clinic-approved biography. Verify all role, qualification and registration details before publishing.]',
+  },
+  {
+    id: 'placeholder-specialist-2',
+    name: '[Specialist name 2]',
+    title: '[Add verified professional title]',
+    photo: null,
+    qualifications: ['[Add verified qualifications]'],
+    practiceAreas: ['[Add verified practice areas]'],
+    languages: ['[Add languages spoken]'],
+    availability: ['[Add current availability]'],
+    serviceIds: [],
+    serviceSlugs: ['occupational-therapy', 'speech-therapy'],
+    bio: '[Add a clinic-approved biography. Verify all role, qualification and registration details before publishing.]',
+  },
+];
