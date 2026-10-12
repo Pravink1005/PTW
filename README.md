@@ -20,10 +20,9 @@ React 18, React Router 7, Vite 8, Tailwind CSS 3, React Hook Form, Supabase JS 2
 
 ```powershell
 npm ci
-Copy-Item .env.example .env.local
 ```
 
-Edit `.env.local`:
+Create `.env.local` in the project root with:
 
 ```dotenv
 VITE_SUPABASE_URL=https://your-project-ref.supabase.co
@@ -41,7 +40,9 @@ Restart Vite after changing environment variables. Both values are browser-visib
 5. Add the first administrator only after their Auth account exists. In SQL Editor, replace the email with the exact account email:
 
    ```sql
-x
+   insert into public.admin_users (user_id)
+   select id from auth.users where email = 'owner@example.com'
+   on conflict (user_id) do nothing;
    ```
 
 6. Confirm one row was inserted (or zero if the account was already an admin). Do not grant browser access to `admin_users`; admin membership is checked through the `is_admin()` database function and RLS policies.
@@ -79,6 +80,16 @@ Supabase Free pricing checked **2026-10-12** lists 50,000 monthly active users, 
 
 Do not infer unlimited hosting, traffic, uptime, backups, or support from these plans.
 
+## Vercel Deployment
+
+1. Import the GitHub repository into Vercel and select the repository root. Vercel detects Vite; `vercel.json` sets `npm run build`, `dist`, and the SPA rewrite needed for React Router deep links.
+2. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in **Project Settings → Environment Variables** for Production and Preview (and Development if using `vercel dev`). These values are public in the browser bundle. Do not add a Supabase service-role key or other secret.
+3. Deploy. Vercel builds on pushes to the production branch and creates preview deployments for other branches/pull requests. Confirm direct navigation and refresh work on `/services`, `/services/child-counselling`, and `/admin/login`.
+4. In Supabase **Authentication → URL Configuration**, set the production Vercel/custom domain as the Site URL. Add `http://localhost:5173/**` for local auth and only the production/preview URLs that need email or auth redirects. Avoid broad redirect patterns; prefer the exact production origin and the narrowest supported preview pattern.
+5. Replace `example.com` in `public/sitemap.xml` and `public/robots.txt` with the production domain. Add any custom domain in Vercel and include that exact origin in Supabase's redirect allow-list.
+
+Vercel references: [Vite deployment guide](https://vercel.com/docs/frameworks/frontend/vite), [project configuration](https://vercel.com/docs/project-configuration/vercel-json), and [environment variables](https://vercel.com/docs/environment-variables).
+
 ## SEO and Accessibility
 
 Public route components set page-specific titles and descriptions. Clinic JSON-LD is generated from the current clinic settings; any missing or placeholder values are explicitly marked in the structured data and must be replaced and verified. `robots.txt` excludes `/admin/`; it is not an access-control mechanism. Sitemap and robots files intentionally use an `example.com` placeholder until the production domain is known.
@@ -95,12 +106,12 @@ The public layout includes a skip link, named navigation landmarks, heading hier
 
 ## Troubleshooting
 
-- **Supabase is not configured:** check both `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in `.env.local` or Pages build variables, then restart the dev server/redeploy. Only the public anon/publishable key belongs in the client.
+- **Supabase is not configured:** check both `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in `.env.local` or the hosting provider's build environment variables, then restart the dev server/redeploy. Only the public anon/publishable key belongs in the client.
 - **Admin sign-in returns to login:** confirm the Auth user exists in `public.admin_users`, the `is_admin()` RPC is available from migration `0001`, and the Auth session is valid. The browser cannot read `admin_users` directly.
 - **Admin queries return permission errors or empty rows:** check that migrations ran in order, the user has a matching membership row, and RLS is enabled. Do not bypass RLS to fix a frontend error.
 - **Services or specialists are missing:** confirm the rows are active and the specialist/service relationship rows are present. The public site intentionally reads only active catalog rows.
 - **Appointment submission fails:** verify the service is active, required fields and consent are valid, the date is not in the past, and the RPC from migration `0001` is installed. The UI does not claim success without a returned reference number.
-- **Direct route refresh returns a host-level 404:** confirm Cloudflare Pages is publishing `dist` and includes the `public/_redirects` SPA rewrite.
+- **Direct route refresh returns a host-level 404:** confirm the provider publishes `dist`; Cloudflare Pages uses `public/_redirects`, while Vercel uses the root `vercel.json` SPA rewrite.
 - **Seed content reappears:** `supabase/seed.sql` is intentionally a reset to placeholder settings/services. Do not rerun it against content that should be preserved.
 
 ## Dependencies
