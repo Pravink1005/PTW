@@ -6,7 +6,7 @@ const styles = {
 };
 
 export default function Button({ to, href, variant = 'primary', className = '', children, ...rest }) {
-  const cls = `inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition-colors ${styles[variant]} ${className}`;
+  const cls = `inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[3px] px-5 py-3 font-semibold transition-colors ${styles[variant]} ${className}`;
   if (to) return <Link to={to} className={cls} {...rest}>{children}</Link>;
   if (href) return <a href={href} className={cls} {...rest}>{children}</a>;
   return <button className={cls} {...rest}>{children}</button>;

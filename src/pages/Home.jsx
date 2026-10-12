@@ -39,7 +39,6 @@ export default function Home() {
           </div>
           <p className="home-hero-note"><span aria-hidden="true" /> A thoughtful first step can be a small one.</p>
         </div>
-        <a className="home-photo-credit" href="https://unsplash.com/photos/therapist-listens-to-patient-in-a-counseling-session-tw-mAZXr6H4" target="_blank" rel="noreferrer"></a>
       </section>
 
       <section className="we-heard-section" aria-labelledby="we-heard-heading">

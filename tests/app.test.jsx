@@ -23,6 +23,7 @@ describe('public routes and navigation', () => {
     expect(screen.getByRole('heading', { name: 'You are not alone in this.' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'We heard you.' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'We value your privacy.' })).toBeInTheDocument();
+    expect(screen.queryByRole('link', { name: /Photo: Vitaly Gariev/ })).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole('link', { name: 'Services' }));
     expect(await screen.findByRole('heading', { name: 'Our Services', level: 1 })).toBeInTheDocument();
     await waitFor(() => expect(document.title).toContain('Our Services'));

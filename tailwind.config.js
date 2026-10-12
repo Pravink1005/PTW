@@ -4,16 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: { DEFAULT: '#16834A', dark: '#075B35', soft: '#E9F6E9', cream: '#FFFDF5' },
-        ink: { DEFAULT: '#24332B', muted: '#647067' },
-        line: '#E1EAE2',
+        brand: { DEFAULT: '#2D6A4F', dark: '#193C30', soft: '#E7F0E8', cream: '#F7F8F3' },
+        ink: { DEFAULT: '#1F3028', muted: '#58675E' },
+        line: '#D8E2D9',
       },
       fontFamily: {
-        display: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
-        sans: ['Figtree', 'system-ui', 'sans-serif'],
+        display: ['"DM Serif Display"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
       },
-      borderRadius: { card: '1.5rem' },
-      boxShadow: { soft: '0 6px 24px -8px rgba(7,91,53,.14)' },
+      borderRadius: { card: '4px' },
+      boxShadow: { soft: '0 8px 24px -16px rgba(25,60,48,.24)' },
     },
   },
   plugins: [],
