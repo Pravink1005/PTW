@@ -21,11 +21,11 @@ describe('public routes and navigation', () => {
   it('renders the home route and navigates to the service directory', async () => {
     renderApp();
     expect(screen.getByRole('heading', { name: 'You are not alone in this.' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'We heard you.' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'We value your privacy.' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Where to start' })).toBeInTheDocument();
+    expect(screen.getByText(/Share only the details needed for the clinic to respond/)).toBeInTheDocument();
     expect(screen.queryByRole('link', { name: /Photo: Vitaly Gariev/ })).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole('link', { name: 'Services' }));
-    expect(await screen.findByRole('heading', { name: 'Our Services', level: 1 })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'Our services', level: 1 })).toBeInTheDocument();
     await waitFor(() => expect(document.title).toContain('Our Services'));
   });
 
@@ -37,8 +37,8 @@ describe('public routes and navigation', () => {
 
   it.each([
     ['/about', 'About MindCare'],
-    ['/specialists', 'Our Specialists'],
-    ['/appointment', 'Request an Appointment'],
+    ['/specialists', 'Our specialists'],
+    ['/appointment', 'Request an appointment'],
     ['/contact', 'Contact'],
     ['/privacy', 'Privacy Policy'],
     ['/terms', 'Terms of Use'],
@@ -53,6 +53,10 @@ describe('public routes and navigation', () => {
     expect(screen.getByRole('navigation', { name: 'Main' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Skip to content' })).toHaveAttribute('href', '#main');
     expect(screen.getByRole('main')).toBeInTheDocument();
+    const quickContact = screen.getByRole('navigation', { name: 'Quick contact' });
+    expect(quickContact.querySelector('a[href^="tel:"]')).toHaveAttribute('href', 'tel:+910000000000');
+    expect(quickContact.querySelector('a[href^="https://wa.me/"]')).toHaveAttribute('href', expect.stringContaining('https://wa.me/910000000000'));
+    expect(quickContact.querySelector('a[href="/appointment"]')).toBeInTheDocument();
   });
 
   it('publishes LocalBusiness JSON-LD and identifies fallback placeholders', () => {

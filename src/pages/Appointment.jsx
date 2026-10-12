@@ -111,11 +111,10 @@ export default function Appointment() {
 
   if (referenceNumber) {
     return (
-      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6" aria-labelledby="appointment-success-heading">
-        <p className="text-sm font-semibold uppercase text-brand">Request received</p>
+      <section className="public-page appointment-page appointment-success" aria-labelledby="appointment-success-heading">
         <h1 id="appointment-success-heading" className="mt-2 text-4xl font-bold">Thank you</h1>
         <p className="mt-5 text-lg leading-7">Your appointment request has been received. The clinic will contact you to confirm availability.</p>
-        <p className="mt-7 text-sm font-semibold uppercase text-ink-muted">Reference number</p>
+        <p className="request-reference-label">Reference number</p>
         <p className="mt-2 inline-block rounded-card border border-line bg-white px-5 py-3 font-mono text-xl font-bold" aria-live="polite">{referenceNumber}</p>
         <p className="mt-5 text-sm leading-6 text-ink-muted">Keep this reference number for your records. Your appointment is not confirmed until the clinic contacts you.</p>
       </section>
@@ -126,11 +125,10 @@ export default function Appointment() {
   const fieldClass = 'mt-1 min-h-11 w-full rounded-card border border-line bg-white px-3 py-2 text-ink';
 
   return (
-    <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-      <header className="border-b border-line pb-7">
-        <p className="text-sm font-semibold uppercase text-brand">Appointment request</p>
-        <h1 className="mt-2 text-4xl font-bold">Request an Appointment</h1>
-        <p className="mt-4 leading-7 text-ink-muted">Share your preferred service and time. This is a request, not a confirmed booking; the clinic will contact you about availability.</p>
+    <section className="public-page appointment-page">
+      <header className="page-intro">
+        <h1>Request an appointment</h1>
+        <p>Share your preferred service and time. This is a request, not a confirmed booking; the clinic will contact you about availability.</p>
       </header>
 
       {settings.appointmentInstructions && <p className="mt-6 border-l-4 border-brand bg-white px-4 py-3 text-sm leading-6" role="note">{settings.appointmentInstructions}</p>}
@@ -142,7 +140,7 @@ export default function Appointment() {
       )}
       {supabase && <DataNotice status={serviceStatus} />}
 
-      <form className="mt-7 space-y-5" noValidate onSubmit={handleSubmit(submitRequest)}>
+      <form className="appointment-form" noValidate onSubmit={handleSubmit(submitRequest)}>
         <div>
           <label className="font-semibold" htmlFor="client_name">Client name <span aria-hidden="true">*</span></label>
           <input id="client_name" autoComplete="name" className={fieldClass} aria-invalid={Boolean(errors.client_name)} aria-describedby={errors.client_name ? 'client_name-error' : undefined} {...register('client_name', { validate: validateClientName })} />

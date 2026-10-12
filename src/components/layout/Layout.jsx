@@ -1,9 +1,10 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import { MessageCircle } from 'lucide-react';
+import { CalendarDays, MessageCircle, Phone } from 'lucide-react';
 import Header from './Header';
 import Footer from './Footer';
 import ClinicStructuredData from './ClinicStructuredData';
+import { Link } from 'react-router-dom';
 import { whatsappUrl } from '../../config/site';
 import { ClinicDataProvider, useClinicData } from '../../lib/ClinicDataContext';
 
@@ -12,20 +13,18 @@ function LayoutContent() {
   const { settings } = useClinicData();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return (
-    <>
+    <div className="public-site">
       <ClinicStructuredData />
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-white focus:p-3">Skip to content</a>
       <Header />
       <main id="main"><Outlet /></main>
       <Footer />
-      <a
-        href={whatsappUrl(`Hello, I would like to know more about ${settings.name}.`, settings.whatsappNumber)} target="_blank" rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp (opens WhatsApp; this does not submit an appointment)"
-        className="fixed bottom-4 right-4 z-30 grid h-12 w-12 place-items-center rounded-full bg-brand text-white shadow-soft hover:bg-brand-dark"
-      >
-        <MessageCircle aria-hidden="true" />
-      </a>
-    </>
+      <nav className="mobile-action-bar" aria-label="Quick contact">
+        <a href={`tel:${settings.phone.replace(/[^\d+]/g, '')}`}><Phone size={18} aria-hidden="true" /><span>Call</span></a>
+        <a href={whatsappUrl(`Hello, I would like to know more about ${settings.name}.`, settings.whatsappNumber)} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} aria-hidden="true" /><span>WhatsApp</span></a>
+        <Link to="/appointment"><CalendarDays size={18} aria-hidden="true" /><span>Request</span></Link>
+      </nav>
+    </div>
   );
 }
 

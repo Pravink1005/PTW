@@ -4,16 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: { DEFAULT: '#2D6A4F', dark: '#193C30', soft: '#E7F0E8', cream: '#F7F8F3' },
-        ink: { DEFAULT: '#1F3028', muted: '#58675E' },
-        line: '#D8E2D9',
+        brand: { DEFAULT: 'var(--color-primary)', dark: 'var(--color-primary-dark)', soft: 'var(--color-primary-soft)', cream: 'var(--color-cream)' },
+        ink: { DEFAULT: 'var(--color-text)', muted: 'var(--color-muted)' },
+        line: 'var(--color-border)',
       },
       fontFamily: {
         display: ['"DM Serif Display"', 'Georgia', 'serif'],
         sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
       },
-      borderRadius: { card: '4px' },
-      boxShadow: { soft: '0 8px 24px -16px rgba(25,60,48,.24)' },
+      borderRadius: { card: '24px' },
+      boxShadow: { soft: '0 12px 36px -24px rgba(7,91,53,.22)' },
     },
   },
   plugins: [],

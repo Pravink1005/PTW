@@ -5,7 +5,7 @@ import { useClinicData } from '../lib/ClinicDataContext';
 
 function BulletSection({ title, children }) {
   return (
-    <section className="border-t border-line py-7">
+    <section className="service-detail-section">
       <h2 className="text-2xl font-bold">{title}</h2>
       {children}
     </section>
@@ -20,8 +20,7 @@ export default function ServiceDetail() {
 
   if (!service) {
     return (
-      <section className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
-        <p className="text-sm font-semibold uppercase text-brand">Service directory</p>
+      <section className="public-page service-not-found">
         <h1 className="mt-3 text-4xl font-bold">We couldn’t find that service</h1>
         <p className="mt-4 text-ink-muted">The link may be out of date, or the service may no longer be listed.</p>
         <Button to="/services" className="mt-7">Browse all services</Button>
@@ -34,11 +33,10 @@ export default function ServiceDetail() {
     .filter(Boolean);
 
   return (
-    <article className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
-      <Link to="/services" className="text-sm font-semibold text-brand hover:underline">← All services</Link>
-      <header className="py-9">
-        <p className="text-sm font-semibold uppercase text-brand">{service.category === 'counselling' ? 'Counselling' : 'Rehabilitation & therapy'}</p>
-        <h1 className="mt-2 text-4xl font-bold sm:text-5xl">{service.name}</h1>
+    <article className="public-page service-detail-page">
+      <Link to="/services" className="service-back-link">← All services</Link>
+      <header className="page-intro service-detail-intro">
+        <h1>{service.name}</h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-ink-muted">{service.introduction}</p>
         <Button to={`/appointment?service=${service.slug}`} className="mt-7">Request an Appointment</Button>
       </header>
@@ -69,7 +67,7 @@ export default function ServiceDetail() {
       </BulletSection>
 
       {relatedServices.length > 0 && (
-        <section className="border-t border-line py-7" aria-labelledby="related-services-heading">
+        <section className="service-detail-section" aria-labelledby="related-services-heading">
           <h2 id="related-services-heading" className="text-2xl font-bold">Related services</h2>
           <ul className="mt-4 grid gap-3 sm:grid-cols-2">
             {relatedServices.map((related) => (

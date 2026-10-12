@@ -13,29 +13,29 @@ function DetailList({ label, values }) {
 export default function SpecialistCard({ specialist }) {
   const { name, title, photo, qualifications, practiceAreas, languages, availability, bio } = specialist;
   return (
-    <article className="flex h-full flex-col border-t-2 border-brand bg-white p-5 shadow-soft">
-      <div className="flex items-start gap-4">
+    <article className="specialist-card">
+      <div className="specialist-card-heading">
         {photo ? (
-          <img src={photo} alt={`Portrait of ${name}`} className="h-20 w-20 rounded-full object-cover" />
+          <img src={photo} alt={`Portrait of ${name}`} className="specialist-card-photo" />
         ) : (
-          <div className="grid h-20 w-20 shrink-0 place-items-center rounded-full bg-brand-soft text-brand-dark" aria-hidden="true">
+          <div className="specialist-photo-placeholder" aria-hidden="true">
             <UserRound size={34} aria-hidden="true" />
           </div>
         )}
-        <div className="pt-1">
-          <p className="mb-1 text-xs font-semibold uppercase text-brand">Placeholder profile</p>
-          <h2 className="text-xl font-bold">{name}</h2>
-          <p className="mt-1 text-sm text-ink-muted">{title}</p>
+        <div>
+          <p className="specialist-profile-note">Placeholder profile</p>
+          <h2>{name}</h2>
+          <p>{title}</p>
         </div>
       </div>
-      <p className="mt-4 leading-7 text-ink-muted">{bio}</p>
-      <dl className="mt-5 grid gap-4 border-t border-line pt-4">
+      <p className="specialist-bio">{bio}</p>
+      <dl className="specialist-details">
         <DetailList label="Qualifications" values={qualifications} />
         <DetailList label="Practice areas" values={practiceAreas} />
         <DetailList label="Languages" values={languages} />
         <DetailList label="Availability" values={availability} />
       </dl>
-      <Button to="/appointment" variant="secondary" className="mt-6 w-full">Request an Appointment</Button>
+      <Button to="/appointment" variant="secondary" className="specialist-cta">Request an appointment</Button>
     </article>
   );
 }
