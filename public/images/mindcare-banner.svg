@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#123F49" />
+      <stop offset="60%" stop-color="#0E333B" />
+      <stop offset="100%" stop-color="#071E23" />
+    </linearGradient>
+    <linearGradient id="accentTeal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2A8B9E" />
+      <stop offset="100%" stop-color="#55A8A3" />
+    </linearGradient>
+    <linearGradient id="softCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.04" />
+    </linearGradient>
+    <linearGradient id="warmSun" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F1A388" />
+      <stop offset="100%" stop-color="#E5876B" />
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="420" fill="url(#bgGrad)" rx="24" />
+
+  <!-- Organic Ambient Glows -->
+  <circle cx="1080" cy="80" r="160" fill="#2A8B9E" opacity="0.18" filter="url(#softGlow)" />
+  <circle cx="920" cy="340" r="140" fill="#F1A388" opacity="0.12" filter="url(#softGlow)" />
+  <circle cx="120" cy="380" r="120" fill="#55A8A3" opacity="0.15" filter="url(#softGlow)" />
+
+  <!-- Decorative Wave / Sanctuary Arcs (Right Side) -->
+  <g opacity="0.85">
+    <path d="M 820 420 C 850 300, 920 220, 1020 200 C 1100 180, 1160 210, 1200 240 L 1200 420 Z" fill="#184C57" opacity="0.6" />
+    <path d="M 880 420 C 930 320, 1010 260, 1110 260 C 1150 260, 1180 270, 1200 280 L 1200 420 Z" fill="#225D6B" opacity="0.5" />
+    
+    <!-- Balance Stones / Sanctuary Shapes -->
+    <ellipse cx="1030" cy="180" rx="42" ry="24" fill="url(#warmSun)" opacity="0.9" transform="rotate(-6 1030 180)" />
+    <ellipse cx="1040" cy="138" rx="30" ry="17" fill="#72C5D6" opacity="0.85" transform="rotate(4 1040 138)" />
+    <ellipse cx="1046" cy="107" rx="18" ry="11" fill="#F7FAFA" opacity="0.9" />
+
+    <!-- Botanical Sprout -->
+    <path d="M 1046 96 C 1046 72, 1068 56, 1084 52 C 1084 68, 1068 90, 1046 96 Z" fill="#88C7B2" />
+    <path d="M 1046 96 C 1044 76, 1026 64, 1012 62 C 1014 78, 1028 92, 1046 96 Z" fill="#A8DFC9" />
+  </g>
+
+  <!-- Left Side Content -->
+  <g transform="translate(70, 60)">
+    <!-- Brand Kicker Pill -->
+    <g>
+      <rect width="260" height="34" rx="17" fill="url(#softCard)" stroke="#55A8A3" stroke-opacity="0.4" stroke-width="1" />
+      <circle cx="18" cy="17" r="5" fill="#72C5D6" />
+      <text x="32" y="22" font-family="'Segoe UI', Roboto, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#B8E2EB" letter-spacing="1.2">
+        MINDCARE THERAPY CENTRE
+      </text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="0" y="112" font-family="'Georgia', serif" font-size="44" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">
+      Compassionate Care for Mind,
+    </text>
+    <text x="0" y="162" font-family="'Georgia', serif" font-size="44" font-weight="700" fill="url(#accentTeal)" letter-spacing="-0.5">
+      Growth &amp; Daily Life
+    </text>
+
+    <!-- Tagline & Description -->
+    <text x="0" y="206" font-family="'Segoe UI', Roboto, Helvetica, sans-serif" font-size="16" fill="#D0E3E7" opacity="0.92">
+      Full-stack clinical platform with 11 specialized counselling &amp; therapy services,
+    </text>
+    <text x="0" y="230" font-family="'Segoe UI', Roboto, Helvetica, sans-serif" font-size="16" fill="#D0E3E7" opacity="0.92">
+      direct online appointment intake, and authenticated administration.
+    </text>
+
+    <!-- Key Feature Badges Row -->
+    <g transform="translate(0, 260)">
+      <!-- Badge 1 -->
+      <g transform="translate(0, 0)">
+        <rect width="180" height="38" rx="19" fill="url(#softCard)" stroke="#FFFFFF" stroke-opacity="0.15" />
+        <text x="18" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">
+          🌱 11 Clinical Services
+        </text>
+      </g>
+      <!-- Badge 2 -->
+      <g transform="translate(192, 0)">
+        <rect width="195" height="38" rx="19" fill="url(#softCard)" stroke="#FFFFFF" stroke-opacity="0.15" />
+        <text x="18" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">
+          🔒 Strict Confidentiality
+        </text>
+      </g>
+      <!-- Badge 3 -->
+      <g transform="translate(399, 0)">
+        <rect width="195" height="38" rx="19" fill="url(#softCard)" stroke="#FFFFFF" stroke-opacity="0.15" />
+        <text x="18" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">
+          📅 Direct Intake Flow
+        </text>
+      </g>
+      <!-- Badge 4 -->
+      <g transform="translate(606, 0)">
+        <rect width="165" height="38" rx="19" fill="url(#softCard)" stroke="#FFFFFF" stroke-opacity="0.15" />
+        <text x="18" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">
+          🛡️ Supabase RLS
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
+
