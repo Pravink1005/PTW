@@ -145,42 +145,7 @@
 .site-footer-bottom p { margin: 0; color: #bfcec1; font-size: 11px; line-height: 1.5; }
 
 .home-hero h1, .we-heard-heading h2, .home-specialists-content h2, .home-privacy-layout h2, .home-visit-heading h2, .home-closing-content h2, .we-heard-answer p { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; }
-@media (max-width: 760px) {
-  .home-hero { min-height: 590px; }
-  .home-hero-image { object-position: 57% center; }
-  .home-hero-shade { background: rgba(13, 39, 33, .68); }
-  .home-hero-content { padding: 76px 22px 94px; }
-  .home-hero h1 { font-size: 54px; }
-  .home-hero-intro { max-width: 540px; font-size: 17px; }
-  .home-section-shell { width: min(100% - 36px, 1120px); }
-  .we-heard-section { padding: 58px 0 62px; }
-  .we-heard-heading { grid-template-columns: 1fr; gap: 10px; }
-  .we-heard-heading .home-section-kicker { margin-bottom: 3px; }
-  .we-heard-heading h2, .home-specialists-content h2, .home-privacy-layout h2, .home-visit-heading h2, .home-closing-content h2 { font-size: 35px; }
-  .we-heard-heading > p:last-child { margin-top: 3px; }
-  .we-heard-content { grid-template-columns: 1fr; gap: 22px; margin-top: 25px; }
-  .we-heard-option { min-height: 62px; font-size: 15px; }
-  .we-heard-answer { padding: 4px 0 0 4px; }
-  .we-heard-answer p { font-size: 21px; }
-  .home-specialists-content, .home-closing-content { align-items: flex-start; flex-direction: column; gap: 22px; padding-top: 43px; padding-bottom: 43px; }
-  .home-privacy-layout { grid-template-columns: 48px minmax(0, 1fr); gap: 17px; padding-top: 51px; padding-bottom: 54px; }
-  .home-privacy-icon { width: 46px; }
-  .home-privacy-icon svg { width: 23px; }
-  .home-visit-section { padding: 50px 0; }
-  .home-visit-list { grid-template-columns: 1fr; }
-  .home-visit-list li { min-height: auto; padding: 18px 12px; }
-  .home-visit-list li + li { border-top: 1px solid #dce3dc; border-left: 0; }
-}
-@media (max-width: 420px) {
-  .home-hero { min-height: 610px; }
-  .home-hero-content { padding-inline: 18px; }
-  .home-hero h1 { font-size: 46px; }
-  .home-hero-intro { font-size: 16px; }
-  .home-hero-actions { align-items: stretch; flex-direction: column; max-width: 290px; }
-  .home-hero-actions a { justify-content: center; }
-  .home-section-shell { width: min(100% - 30px, 1120px); }
-  .we-heard-heading h2, .home-specialists-content h2, .home-privacy-layout h2, .home-visit-heading h2, .home-closing-content h2 { font-size: 31px; }
-}
+/* Obsolete media queries removed */
 
 .admin-loading, .admin-login-page {
   min-height: 100vh;
@@ -393,7 +358,7 @@
 
 .home-hero { display: block; min-height: 0; overflow: visible; isolation: auto; background: var(--color-cream); color: var(--color-text); }
 .home-hero { display: block; min-height: 0; overflow: visible; isolation: auto; background: var(--color-cream); color: var(--color-text); }
-.home-hero-inner { display: grid; width: min(100% - 48px, 1200px); grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr); align-items: center; gap: clamp(36px, 6vw, 88px); margin: 0 auto; padding: 62px 0 78px; }
+.home-hero-inner { display: grid; width: min(100% - 48px, 1200px); grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(32px, 5vw, 64px); margin: 0 auto; padding: 52px 0 48px; }
 .home-hero-content { width: auto; margin: 0; padding: 0; animation: home-content-enter .55s ease-out both; }
 .home-hero h1 { max-width: 590px; margin: 0; color: var(--color-text); font-size: 64px; line-height: 1.08; }
 .public-site main .home-hero-intro { max-width: 56ch; margin: 22px 0 0; color: var(--color-muted); font-size: 19px; line-height: 1.7; }

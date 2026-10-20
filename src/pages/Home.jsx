@@ -115,7 +115,7 @@ export default function Home() {
               </div>
             </div>
             <div className="pt-1.5">
-              <Button to="/about" variant="secondary">
+              <Button to="/about" variant="secondary" className="w-full sm:w-auto justify-center">
                 Read our story &amp; care philosophy <ArrowRight size={16} aria-hidden="true" />
               </Button>
             </div>
@@ -214,7 +214,7 @@ export default function Home() {
             </div>
             <Link
               to="/contact"
-              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-brand bg-brand-soft px-5 py-2.5 text-sm font-semibold text-brand-dark hover:bg-brand hover:text-white transition-colors duration-150"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-brand bg-brand-soft px-5 py-2.5 text-sm font-semibold text-brand-dark hover:bg-brand hover:text-white transition-colors duration-150 w-full sm:w-auto"
             >
               Ask the clinic a question <ArrowRight size={16} aria-hidden="true" />
             </Link>
@@ -390,7 +390,7 @@ export default function Home() {
             </div>
             <Link
               to="/privacy"
-              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-brand/30 bg-white px-4 py-2 text-sm font-semibold text-brand-dark hover:bg-brand hover:text-white transition-colors duration-150 self-start md:self-center"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-brand/30 bg-white px-4 py-2 text-sm font-semibold text-brand-dark hover:bg-brand hover:text-white transition-colors duration-150 w-full sm:w-auto self-stretch sm:self-start md:self-center"
             >
               Read the privacy information <ArrowRight size={15} aria-hidden="true" />
             </Link>
@@ -418,18 +418,18 @@ export default function Home() {
             >
               Whether you have a specific question about our services or wish to explore beginning therapy, our clinic team is here to listen and assist with kindness and care.
             </p>
-            <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full">
               <Link
                 id="closing-primary-cta"
                 to="/appointment"
-                className="home-primary-cta inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full !bg-white !text-brand-dark hover:!bg-brand-soft shadow-md font-semibold px-7 py-3.5 text-base transition-colors no-underline"
+                className="home-primary-cta inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full !bg-white !text-brand-dark hover:!bg-brand-soft shadow-md font-semibold px-7 py-3.5 text-base transition-colors no-underline w-full sm:w-auto"
                 style={{ backgroundColor: '#FFFFFF', color: '#123F49' }}
               >
                 Request an appointment <ArrowRight size={18} aria-hidden="true" />
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3.5 text-base font-semibold !text-white hover:bg-white/20 transition-colors no-underline"
+                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3.5 text-base font-semibold !text-white hover:bg-white/20 transition-colors no-underline w-full sm:w-auto"
                 style={{ color: '#FFFFFF' }}
               >
                 Ask a question first <ArrowRight size={18} aria-hidden="true" />
