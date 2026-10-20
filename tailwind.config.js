@@ -13,7 +13,7 @@ export default {
         sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
       },
       borderRadius: { card: '24px' },
-      boxShadow: { soft: '0 12px 36px -24px rgba(7,91,53,.22)' },
+      boxShadow: { soft: '0 12px 36px -24px rgba(18,63,73,.18)' },
     },
   },
   plugins: [],

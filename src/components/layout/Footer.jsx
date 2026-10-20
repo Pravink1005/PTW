@@ -14,9 +14,9 @@ export default function Footer() {
           <span aria-hidden="true"> · </span>
           <a href={`mailto:${settings.email}`}>{settings.email}</a>
         </div>
-        <nav aria-label="Footer services" className="site-footer-nav">
-          <p>Explore</p>
-          <ul>
+        <nav aria-label="Footer services" className="site-footer-nav site-footer-explore">
+          <p>Explore Services</p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
             {services.map((s) => (
               <li key={s.slug}><Link className="hover:underline" to={`/services/${s.slug}`}>{s.name}</Link></li>
             ))}
@@ -24,7 +24,7 @@ export default function Footer() {
         </nav>
         <nav aria-label="Footer clinic links" className="site-footer-nav">
           <p>Clinic</p>
-          <ul>
+          <ul className="space-y-2">
             <li><Link className="hover:underline" to="/appointment">Request an appointment</Link></li>
             <li><Link className="hover:underline" to="/contact">Contact</Link></li>
             <li><Link className="hover:underline" to="/privacy">Privacy policy</Link></li>

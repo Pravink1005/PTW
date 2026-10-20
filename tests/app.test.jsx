@@ -20,7 +20,7 @@ function renderApp(path = '/') {
 describe('public routes and navigation', () => {
   it('renders the home route and navigates to the service directory', async () => {
     renderApp();
-    expect(screen.getByRole('heading', { name: 'You are not alone in this.' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Compassionate Care for Mind/ })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Where to start' })).toBeInTheDocument();
     expect(screen.getByText(/Share only the details needed for the clinic to respond/)).toBeInTheDocument();
     expect(screen.queryByRole('link', { name: /Photo: Vitaly Gariev/ })).not.toBeInTheDocument();
