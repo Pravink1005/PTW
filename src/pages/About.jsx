@@ -125,13 +125,13 @@ export default function About() {
             </p>
           </div>
         </div>
-        <div className="mt-8 pt-6 border-t border-line flex flex-wrap items-center justify-between gap-4">
+        <div className="mt-8 pt-6 border-t border-line flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <p className="text-sm text-ink-muted">
             Have a question about whether our clinic is the right fit for your needs?
           </p>
-          <div className="flex items-center gap-3">
-            <Button to="/contact" variant="secondary">Contact the clinic</Button>
-            <Button to="/appointment">Request an appointment <ArrowRight size={16} aria-hidden="true" /></Button>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+            <Button to="/contact" variant="secondary" className="w-full sm:w-auto justify-center min-h-[48px]">Contact the clinic</Button>
+            <Button to="/appointment" className="w-full sm:w-auto justify-center min-h-[48px]">Request an appointment <ArrowRight size={16} aria-hidden="true" /></Button>
           </div>
         </div>
       </section>

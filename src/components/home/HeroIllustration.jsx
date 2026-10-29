@@ -6,6 +6,8 @@ export default function HeroIllustration({ className = '' }) {
       aria-label="MindCare therapy sanctuary: welcoming room with comfortable armchair, natural indoor plant, sunlit window, and trusted care badges"
     >
       <svg
+        width="540"
+        height="460"
         viewBox="0 0 540 460"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

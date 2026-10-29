@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 import Button from '../components/ui/Button';
 import ServiceIllustration from '../components/services/ServiceIllustration';
-import { site, whatsappUrl } from '../config/site';
+import { site, whatsappUrl, isPlaceholder } from '../config/site';
 import usePageMetadata from '../hooks/usePageMetadata';
 import { useClinicData } from '../lib/ClinicDataContext';
 
@@ -118,15 +118,17 @@ export default function ServiceDetail() {
                 <Calendar className="w-4 h-4" />
                 <span>Request an Appointment</span>
               </Button>
-              <a
-                href={whatsappUrl(`Hello, I would like to inquire about ${service.name} at MindCare Therapy Centre.`, clinicWhatsapp)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto justify-center inline-flex min-h-[48px] items-center gap-2 px-5 py-2.5 rounded-full border border-line bg-white hover:bg-brand-cream/60 text-ink font-semibold text-sm transition-all shadow-2xs hover:shadow-xs no-underline"
-              >
-                <MessageCircle className="w-4 h-4 text-brand" />
-                <span>Chat on WhatsApp</span>
-              </a>
+              {!isPlaceholder(clinicWhatsapp) && (
+                <a
+                  href={whatsappUrl(`Hello, I would like to inquire about ${service.name} at MindCare Therapy Centre.`, clinicWhatsapp)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto justify-center inline-flex min-h-[48px] items-center gap-2 px-5 py-2.5 rounded-full border border-line bg-white hover:bg-brand-cream/60 text-ink font-semibold text-sm transition-all shadow-2xs hover:shadow-xs no-underline"
+                >
+                  <MessageCircle className="w-4 h-4 text-brand" />
+                  <span>Chat on WhatsApp</span>
+                </a>
+              )}
             </div>
           </div>
 
@@ -438,13 +440,15 @@ export default function ServiceDetail() {
               <Button to={`/appointment?service=${service.slug}`} className="w-full justify-center min-h-[48px]">
                 Request an Appointment
               </Button>
-              <a
-                href={`tel:${clinicPhone}`}
-                className="w-full inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-line bg-white hover:bg-brand-cream/60 py-2.5 px-4 text-xs sm:text-sm font-semibold text-ink transition-colors no-underline shadow-2xs"
-              >
-                <Phone className="w-4 h-4 text-brand" />
-                <span>Call Clinic: {clinicPhone}</span>
-              </a>
+              {!isPlaceholder(clinicPhone) && (
+                <a
+                  href={`tel:${clinicPhone}`}
+                  className="w-full inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-line bg-white hover:bg-brand-cream/60 py-2.5 px-4 text-xs sm:text-sm font-semibold text-ink transition-colors no-underline shadow-2xs"
+                >
+                  <Phone className="w-4 h-4 text-brand" />
+                  <span>Call Clinic: {clinicPhone}</span>
+                </a>
+              )}
             </div>
 
             <div className="mt-6 pt-5 border-t border-line/70">
@@ -519,6 +523,19 @@ export default function ServiceDetail() {
           </div>
         </section>
       )}
+      {/* Mobile Sticky Appointment CTA Bar */}
+      <div className="fixed bottom-[calc(64px+env(safe-area-inset-bottom))] left-0 right-0 z-30 p-2.5 sm:p-3 bg-white/95 backdrop-blur-md border-t border-line shadow-lg lg:hidden flex items-center justify-between gap-3 px-4">
+        <div className="min-w-0">
+          <p className="text-xs sm:text-sm font-semibold text-ink truncate">{service.name}</p>
+          <p className="text-[11px] text-ink-muted truncate">Initial consultation session</p>
+        </div>
+        <Button
+          to={`/appointment?service=${service.slug}`}
+          className="shrink-0 min-h-[44px] text-xs sm:text-sm font-semibold px-4 py-2"
+        >
+          Request Care
+        </Button>
+      </div>
     </article>
   );
 }

@@ -18,11 +18,11 @@ export default function ServiceCard({ service }) {
 
       {/* Category & Audience Badges */}
       <div className="flex items-center justify-between gap-2 mb-2.5">
-        <span className="text-[11px] font-semibold tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-brand-soft text-brand-dark border border-brand/10">
+        <span className="text-xs font-semibold tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-brand-soft text-brand-dark border border-brand/10">
           {isCounselling ? 'Counselling' : 'Therapy'}
         </span>
         {service.audience && (
-          <span className="text-[11px] font-medium text-ink-muted truncate max-w-[170px]">
+          <span className="text-xs font-medium text-ink-muted truncate max-w-[170px]">
             {service.audience.split(',')[0]}
           </span>
         )}
@@ -34,7 +34,7 @@ export default function ServiceCard({ service }) {
       </h3>
 
       {/* Description */}
-      <p className="mt-2 text-sm text-ink-muted leading-relaxed line-clamp-2">
+      <p className="mt-2 text-[15px] text-ink-muted leading-relaxed line-clamp-2">
         {service.blurb}
       </p>
 
@@ -51,7 +51,7 @@ export default function ServiceCard({ service }) {
       )}
 
       {/* Card Action Link */}
-      <div className="mt-auto pt-4 flex items-center justify-between text-xs font-semibold text-brand group-hover:text-brand-dark">
+      <div className="mt-auto pt-4 flex items-center justify-between text-sm font-semibold text-brand group-hover:text-brand-dark">
         <span>Explore service details</span>
         <ArrowRight aria-hidden="true" size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
       </div>

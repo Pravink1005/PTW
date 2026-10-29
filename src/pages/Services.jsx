@@ -1,9 +1,14 @@
 import { ArrowDown, Brain, HeartHandshake } from 'lucide-react';
 import ServiceGroup from '../components/services/ServiceGroup';
 import usePageMetadata from '../hooks/usePageMetadata';
+import { useClinicData } from '../lib/ClinicDataContext';
 
 export default function Services() {
+  const { services } = useClinicData();
   usePageMetadata('Our Services', 'Browse counselling, rehabilitation and therapy services offered by MindCare Therapy Centre.');
+
+  const counsellingCount = services.filter((s) => s.category === 'counselling').length;
+  const rehabCount = services.filter((s) => s.category === 'rehabilitation').length;
 
   return (
     <div className="services-page">
@@ -37,7 +42,7 @@ export default function Services() {
                     <p className="font-semibold text-ink text-sm sm:text-base group-hover:text-brand-dark">
                       Counselling Services
                     </p>
-                    <p className="text-xs text-ink-muted">5 specialized individual &amp; family therapies</p>
+                    <p className="text-xs text-ink-muted">{counsellingCount || 5} specialized individual &amp; family therapies</p>
                   </div>
                 </div>
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-brand border border-line group-hover:border-brand/40 group-hover:translate-y-0.5 transition-all">
@@ -57,7 +62,7 @@ export default function Services() {
                     <p className="font-semibold text-ink text-sm sm:text-base group-hover:text-brand-dark">
                       Rehabilitation &amp; Therapy
                     </p>
-                    <p className="text-xs text-ink-muted">6 developmental &amp; daily life therapies</p>
+                    <p className="text-xs text-ink-muted">{rehabCount || 6} developmental &amp; daily life therapies</p>
                   </div>
                 </div>
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-brand border border-line group-hover:border-brand/40 group-hover:translate-y-0.5 transition-all">

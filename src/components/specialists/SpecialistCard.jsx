@@ -16,7 +16,15 @@ export default function SpecialistCard({ specialist }) {
     <article className="specialist-card">
       <div className="specialist-card-heading">
         {photo ? (
-          <img src={photo} alt={`Portrait of ${name}`} className="specialist-card-photo" />
+          <img
+            src={photo}
+            alt={`Portrait of ${name}`}
+            width="88"
+            height="88"
+            loading="lazy"
+            decoding="async"
+            className="specialist-card-photo"
+          />
         ) : (
           <div className="specialist-photo-placeholder" aria-hidden="true">
             <UserRound size={34} aria-hidden="true" />

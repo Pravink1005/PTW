@@ -122,7 +122,18 @@ export default function Appointment() {
   }
 
   const today = localDateString(new Date());
-  const fieldClass = 'mt-1 min-h-11 w-full rounded-card border border-line bg-white px-3 py-2 text-ink';
+  function onFormError(formErrors) {
+    const errorKeys = Object.keys(formErrors);
+    if (!errorKeys.length) return;
+    const firstField = errorKeys[0];
+    const element = document.querySelector(`[name="${firstField}"]`) || document.getElementById(firstField);
+    if (element) {
+      if (typeof element.scrollIntoView === 'function') element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (typeof element.focus === 'function') element.focus({ preventScroll: true });
+    }
+  }
+
+  const fieldClass = 'mt-1.5 min-h-[52px] w-full rounded-2xl border border-line bg-white px-4 py-3 text-base text-ink focus:border-brand focus:ring-1 focus:ring-brand';
 
   return (
     <section className="public-page appointment-page">
@@ -140,7 +151,7 @@ export default function Appointment() {
       )}
       {supabase && <DataNotice status={serviceStatus} />}
 
-      <form className="appointment-form" noValidate onSubmit={handleSubmit(submitRequest)}>
+      <form className="appointment-form pb-16 sm:pb-8" noValidate onSubmit={handleSubmit(submitRequest, onFormError)}>
         <div>
           <label className="font-semibold" htmlFor="client_name">Client name <span aria-hidden="true">*</span></label>
           <input id="client_name" autoComplete="name" className={fieldClass} aria-invalid={Boolean(errors.client_name)} aria-describedby={errors.client_name ? 'client_name-error' : undefined} {...register('client_name', { validate: validateClientName })} />
@@ -155,7 +166,7 @@ export default function Appointment() {
           </div>
           <div>
             <label className="font-semibold" htmlFor="email">Email <span className="font-normal text-ink-muted">(optional)</span></label>
-            <input id="email" type="email" autoComplete="email" className={fieldClass} aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? 'email-error' : undefined} {...register('email', { validate: (value) => {
+            <input id="email" type="email" autoComplete="email" inputMode="email" className={fieldClass} aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? 'email-error' : undefined} {...register('email', { validate: (value) => {
               const emailResult = validateOptionalEmail(value);
               if (emailResult !== true) return emailResult;
               if (contactMethod === 'email' && !value?.trim()) return 'Enter an email address to be contacted by email.';
@@ -233,7 +244,7 @@ export default function Appointment() {
         </div>
 
         {errors.root?.request && <p role="alert" className="border-l-4 border-red-700 bg-red-50 px-4 py-3 text-sm leading-6 text-red-950">{errors.root.request.message}</p>}
-        <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto">
+        <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto min-h-[52px] text-base font-semibold justify-center">
           {isSubmitting ? 'Sending request…' : 'Send appointment request'}
         </Button>
       </form>

@@ -22,8 +22,30 @@ const startingPoints = [
   },
 ];
 
-export default function Home() {
-  const { settings, specialists, specialistStatus } = useClinicData();
+function HeroVisual({ mode = 'illustration' }) {
+  const [imgError, setImgError] = useState(false);
+
+  if (mode === 'photo' && !imgError) {
+    return (
+      <div className="relative flex items-center justify-center w-full max-w-lg mx-auto">
+        <img
+          src="/images/counselling-session.webp"
+          alt="Therapist and client in a calm, supportive, and confidential counselling session at MindCare Therapy Centre"
+          width="1600"
+          height="900"
+          fetchPriority="high"
+          onError={() => setImgError(true)}
+          className="w-full h-auto aspect-[16/9] object-cover rounded-3xl border border-line shadow-sm"
+        />
+      </div>
+    );
+  }
+
+  return <HeroIllustration className="w-full max-w-lg mx-auto" />;
+}
+
+export default function Home({ heroVisual = 'illustration' }) {
+  const { settings, services, specialists, specialistStatus } = useClinicData();
   const [activeStartingPoint, setActiveStartingPoint] = useState(0);
   usePageMetadata('Home', `Gentle support for every stage of care at ${settings.name}. Counselling, therapy and rehabilitation.`);
 
@@ -33,59 +55,59 @@ export default function Home() {
       <section className="home-hero" aria-labelledby="home-heading">
         <div className="home-hero-inner mx-auto">
           <div className="home-hero-content">
-            <div className="inline-flex items-center gap-2 rounded-full bg-brand-soft px-3.5 py-1.5 text-xs font-semibold tracking-wide text-brand-dark mb-3">
+            <div className="inline-flex items-center gap-2 rounded-full bg-brand-soft px-3.5 py-1 text-xs font-semibold tracking-wide text-brand-dark mb-2 sm:mb-3">
               <span className="h-2 w-2 rounded-full bg-brand" aria-hidden="true" />
               MindCare Therapy Centre
             </div>
-            <h1 id="home-heading">Compassionate Care for Mind, Growth &amp; Daily Life</h1>
+            <h1 id="home-heading" className="font-display font-medium text-ink leading-tight sm:leading-1.08">Compassionate Care for Mind, Growth &amp; Daily Life</h1>
             <p className="home-hero-intro">Dedicated counselling, specialised therapy, and rehabilitation services for individuals, children, and families—guided with patience, dignity, and warmth.</p>
             <div className="home-hero-actions">
-              <Button to="/appointment" className="home-primary-cta">Request an appointment <ArrowRight size={17} aria-hidden="true" /></Button>
-              <a className="home-quiet-link" href="#counselling">Explore services <ArrowRight size={17} aria-hidden="true" /></a>
+              <Button to="/appointment" className="home-primary-cta w-full sm:w-auto justify-center min-h-[48px]">Request an appointment <ArrowRight size={17} aria-hidden="true" /></Button>
+              <a className="home-quiet-link w-full sm:w-auto justify-center text-center py-2 sm:py-0" href="#counselling">Explore services <ArrowRight size={17} aria-hidden="true" /></a>
             </div>
             <p className="home-request-note">An appointment request is not a confirmed booking. The clinic will contact you about availability.</p>
           </div>
-          <HeroIllustration className="w-full max-w-lg mx-auto" />
+          <HeroVisual mode={heroVisual} />
         </div>
       </section>
 
       {/* Reassurance Strip */}
       <section className="border-y border-line bg-white/80 backdrop-blur-sm py-4 sm:py-5" aria-label="Why people choose MindCare">
-        <div className="home-section-shell mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-sm">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand">
-              <ShieldCheck size={20} aria-hidden="true" />
+        <div className="home-section-shell mx-auto grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-5 text-sm">
+          <div className="flex items-start sm:items-center gap-2 sm:gap-3 p-1 sm:p-0">
+            <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-brand-soft text-brand mt-0.5 sm:mt-0">
+              <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
             </div>
-            <div>
-              <p className="font-semibold text-ink text-sm">Confidential &amp; Ethical</p>
-              <p className="text-xs text-ink-muted">A private space respecting your dignity</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand">
-              <Users size={20} aria-hidden="true" />
-            </div>
-            <div>
-              <p className="font-semibold text-ink text-sm">Children to Seniors</p>
-              <p className="text-xs text-ink-muted">Care tailored across every life stage</p>
+            <div className="min-w-0">
+              <p className="font-semibold text-ink text-xs sm:text-sm lg:text-base leading-tight truncate sm:whitespace-normal">Confidential &amp; Ethical</p>
+              <p className="text-[11px] sm:text-xs text-ink-muted leading-tight mt-0.5 line-clamp-1 sm:line-clamp-none">Private respectful space</p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand">
-              <Sparkles size={20} aria-hidden="true" />
+          <div className="flex items-start sm:items-center gap-2 sm:gap-3 p-1 sm:p-0">
+            <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-brand-soft text-brand mt-0.5 sm:mt-0">
+              <Users className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
             </div>
-            <div>
-              <p className="font-semibold text-ink text-sm">11 Specialised Services</p>
-              <p className="text-xs text-ink-muted">Counselling &amp; therapy under one roof</p>
+            <div className="min-w-0">
+              <p className="font-semibold text-ink text-xs sm:text-sm lg:text-base leading-tight truncate sm:whitespace-normal">Children to Seniors</p>
+              <p className="text-[11px] sm:text-xs text-ink-muted leading-tight mt-0.5 line-clamp-1 sm:line-clamp-none">Every life stage</p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand">
-              <HeartHandshake size={20} aria-hidden="true" />
+          <div className="flex items-start sm:items-center gap-2 sm:gap-3 p-1 sm:p-0">
+            <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-brand-soft text-brand mt-0.5 sm:mt-0">
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
             </div>
-            <div>
-              <p className="font-semibold text-ink text-sm">Paced at Your Comfort</p>
-              <p className="text-xs text-ink-muted">Collaborative, non-judgmental guidance</p>
+            <div className="min-w-0">
+              <p className="font-semibold text-ink text-xs sm:text-sm lg:text-base leading-tight truncate sm:whitespace-normal">{services.length || 11} Specialised Services</p>
+              <p className="text-[11px] sm:text-xs text-ink-muted leading-tight mt-0.5 line-clamp-1 sm:line-clamp-none">Counselling &amp; therapy</p>
+            </div>
+          </div>
+          <div className="flex items-start sm:items-center gap-2 sm:gap-3 p-1 sm:p-0">
+            <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-brand-soft text-brand mt-0.5 sm:mt-0">
+              <HeartHandshake className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+            </div>
+            <div className="min-w-0">
+              <p className="font-semibold text-ink text-xs sm:text-sm lg:text-base leading-tight truncate sm:whitespace-normal">Paced at Comfort</p>
+              <p className="text-[11px] sm:text-xs text-ink-muted leading-tight mt-0.5 line-clamp-1 sm:line-clamp-none">Collaborative guidance</p>
             </div>
           </div>
         </div>
